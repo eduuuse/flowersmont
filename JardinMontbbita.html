@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jardín de Flores Animadas para Ti</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffcccc, #ff99cc, #ff66cc, #ff33cc, #ff00cc);
+      background-size: 500% 500%;
+      animation: gradientAnimation 10s ease infinite;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #jardin {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 2s ease;
+    }
+
+    .flor {
+      width: 120px;
+      height: 120px;
+      margin: 10px;
+      background-image: url('https://media.giphy.com/media/XDj52ZQ2F38hzp6F3x/giphy.gif');
+      background-size: cover;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 120px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      animation: swingAnimation 4s ease infinite alternate;
+    }
+
+    @keyframes swingAnimation {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(3deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    .flor:hover {
+      transform: scale(1.05);
+    }
+
+    .mensaje {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .flor .mensaje.visible {
+      opacity: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 2s ease;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jardín de Flores Animadas para Ti</h1>
+  <div id="jardin">
+    <div class="flor">
+      <div class="mensaje">Mensaje 1: Eres la flor más hermosa en mi jardín.</div>
+    </div>
+    <div class="flor">
+      <div class="mensaje">Mensaje 2: Cada pétalo tuyo es una razón para sonreír.</div>
+    </div>
+    <div class="flor">
+      <div class="mensaje">Mensaje 3: Nuestro amor florece como estas flores.</div>
+    </div>
+    <div class="flor">
+      <div class="mensaje">Mensaje 4: Contigo, cada día es primavera.</div>
+    </div>
+    <div class="flor">
+      <div class="mensaje">Mensaje 5: Tu belleza ilumina mi vida como el sol a las flores.</div>
+    </div>
+  </div>
+  <script>
+    const flores = document.querySelectorAll('.flor');
+
+    flores.forEach(function(flor) {
+      flor.addEventListener('click', function() {
+        // Oculta todos los mensajes
+        const mensajes = document.querySelectorAll('.mensaje');
+        mensajes.forEach(function(mensaje) {
+          mensaje.classList.remove('visible');
+        });
+
+        // Muestra el mensaje de la flor seleccionada
+        const mensaje = flor.querySelector('.mensaje');
+        mensaje.classList.add('visible');
+      });
+    });
+  </script>
+</body>
+</html>
